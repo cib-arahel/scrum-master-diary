@@ -33,15 +33,50 @@ function AnalysisChart() {
     datasets: [{
       label: 'Entradas por Categoria',
       data: counts,
-      backgroundColor: ['#0d6efd', '#198754', '#dc3545', '#6c757d']
+      backgroundColor: ['#0d6efd', '#198754', '#dc3545', '#6c757d'],
+      borderRadius: 8, // Deixa as barras com cantos arredondados
+      barThickness: 50
     }]
   };
 
+  const options = {
+    responsive: true,
+    plugins: {
+      legend: {
+        labels: {
+          color: '#333' // Cor da legenda
+        }
+      },
+      title: {
+        display: false
+      }
+    },
+    scales: {
+      x: {
+        ticks: {
+          color: '#333' // Eixo X
+        },
+        grid: {
+          color: 'rgba(0,0,0,0.05)' // Linhas verticais
+        }
+      },
+      y: {
+        ticks: {
+          color: '#333' // Eixo Y
+        },
+        grid: {
+          color: 'rgba(0,0,0,0.05)' // Linhas horizontais
+        },
+        beginAtZero: true
+      }
+    }
+  };
+
   return (
-    <div className="card mb-4">
+    <div className="analysis-card mb-4">
       <div className="card-body">
-        <h5>Análise</h5>
-        <Bar data={data} options={{ scales: { y: { beginAtZero: true } } }} />
+        <h5 className="fw-bold mb-3">📊 Análise</h5>
+        <Bar data={data} options={options} />
       </div>
     </div>
   );

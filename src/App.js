@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './styles/App.css'; // Adicione esta linha
+import './styles/App.css';
+
 import EntryForm from './components/EntryForm';
 import EntryList from './components/EntryList';
 import AnalysisChart from './components/AnalysisChart';
@@ -10,19 +11,25 @@ import ExportPDF from './components/ExportPDF';
 function App() {
   return (
     <Router>
-      <div className="container">
-        <h1 className="text-center my-4">Diário de Scrum Master</h1>
-        <ReflectionTip />
-        <Routes>
-          <Route path="/" element={
-            <>
-              <EntryForm />
-              <EntryList />
-              <AnalysisChart />
-              <ExportPDF />
-            </>
-          } />
-        </Routes>
+      <div className="app-background">
+        <header className="app-header">
+          <h1>📝 Diário de Scrum Master</h1>
+          <p className="subtitle">Organize, analise e reflita sobre sua jornada</p>
+        </header>
+        
+        <div className="container app-container">
+          <ReflectionTip />
+          <Routes>
+            <Route path="/" element={
+              <>
+                <EntryForm />
+                <EntryList />
+                <AnalysisChart />
+                <ExportPDF />
+              </>
+            } />
+          </Routes>
+        </div>
       </div>
     </Router>
   );

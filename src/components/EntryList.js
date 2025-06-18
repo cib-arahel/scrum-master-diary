@@ -15,7 +15,9 @@ function EntryList() {
   }, []);
 
   const handleDelete = async (id) => {
-    await deleteDoc(doc(db, 'entries', id));
+    if (window.confirm('Tem certeza que deseja excluir essa entrada?')) {
+      await deleteDoc(doc(db, 'entries', id));
+    }
   };
 
   const filteredEntries = filterCategory
@@ -23,11 +25,13 @@ function EntryList() {
     : entries;
 
   return (
-    <div className="card mb-4">
+    <div className="entrylist-card mb-4">
       <div className="card-body">
-        <h5>Entradas</h5>
+        <h5 className="fw-bold mb-3">📑 Entradas</h5>
+
         <select
-          className="form-select mb-3"
+          className="form-select mb-4"
+          value={filterCategory}
           onChange={(e) => setFilterCategory(e.target.value)}
         >
           <option value="">Todas</option>
@@ -36,18 +40,38 @@ function EntryList() {
           <option>Impedimentos</option>
           <option>Outros</option>
         </select>
+
+        {filteredEntries.length === 0 && (
+          <p className="text-muted">Nenhuma entrada encontrada.</p>
+        )}
+
         {filteredEntries.map(entry => (
-          <div key={entry.id} className="border-bottom mb-2">
-            <strong>{entry.date} - {entry.category}</strong>
-            <p>{entry.description}</p>
-            {entry.reflection && <p><em>Reflexão:</em> {entry.reflection}</p>}
-            {entry.private && <span className="badge bg-warning">Privado</span>}
-            <button
-              className="btn btn-sm btn-danger"
-              onClick={() => handleDelete(entry.id)}
-            >
-              Excluir
-            </button>
+          <div
+            key={entry.id}
+            className="entry-item mb-3 p-3 rounded"
+          >
+            <div className="d-flex justify-content-between align-items-center mb-2">
+              <div>
+                <strong>{entry.date} - {entry.category}</strong>
+                {entry.private && (
+                  <span className="badge bg-warning ms-2">Privado</span>
+                )}
+              </div>
+              <button
+                className="btn btn-sm btn-danger"
+                onClick={() => handleDelete(entry.id)}
+              >
+                🗑️ Excluir
+              </button>
+            </div>
+
+            <p className="mb-1">{entry.description}</p>
+
+            {entry.reflection && (
+              <p className="fst-italic text-light-emphasis">
+                💭 <em>Reflexão:</em> {entry.reflection}
+              </p>
+            )}
           </div>
         ))}
       </div>
