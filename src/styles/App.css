@@ -1,0 +1,74 @@
+/* Fundo da página */
+body {
+  background-color: #C3B1E1;
+  color: #FFFFFF;
+}
+
+/* Estilo dos cartões */
+.card {
+  background-color: #9575CD;
+  border-color: #FFFFFF;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+/* Títulos */
+h1, h5 {
+  color: #FFFFFF;
+  font-weight: bold;
+}
+
+/* Botões */
+.btn-primary {
+  background-color: #FFFFFF;
+  border-color: #FFFFFF;
+  color: #9575CD; /* Texto em lilás para contraste */
+}
+.btn-primary:hover {
+  background-color: #EDE7F6; /* Lilás muito claro para hover */
+  border-color: #EDE7F6;
+  color: #9575CD;
+}
+.btn-danger {
+  background-color: #FFFFFF;
+  border-color: #FFFFFF;
+  color: #D81B60; /* Rosa escuro para contraste em "Excluir" */
+}
+.btn-danger:hover {
+  background-color: #EDE7F6;
+  border-color: #EDE7F6;
+  color: #D81B60;
+}
+.btn-success {
+  background-color: #FFFFFF;
+  border-color: #FFFFFF;
+  color: #9575CD; /* Texto em lilás para "Exportar" */
+}
+.btn-success:hover {
+  background-color: #EDE7F6;
+  border-color: #EDE7F6;
+  color: #9575CD;
+}
+
+/* Inputs e selects */
+.form-control, .form-select {
+  background-color: #D1C4E9;
+  border-color: #FFFFFF;
+  color: #FFFFFF;
+}
+.form-control:focus, .form-select:focus {
+  background-color: #D1C4E9;
+  border-color: #EDE7F6;
+  box-shadow: 0 0 5px #9575CD;
+}
+
+/* Texto mudo (dica de reflexão) */
+.text-muted {
+  color: #AB47BC !important; /* Mantém lilás claro para contraste */
+}
+
+/* Badge privado */
+.badge.bg-warning {
+  background-color: #F9A825 !important;
+  color: #FFFFFF; /* Texto branco no badge */
+}
